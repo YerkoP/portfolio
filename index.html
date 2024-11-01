@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <template id="cursor-template">
+      <style>
+        .cursor-wrapper {
+          position: fixed;
+          opacity: 1;
+          width: 100px;
+          height: 100px;
+          left: -50px;
+          top: -50px;
+          transform: translate(-100%, -100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1600000;
+          pointer-events: none;
+          isolation: isolate;
+        }
+        .cursor-wrapper.has-blend-mode {
+          mix-blend-mode: exclusion;
+        }
+        
+        .custom-cursor {
+          position: relative;
+          left: 0;
+          top: 0;
+        }
+
+        .custom-cursor__outer {
+          width: 6px;
+          height: 6px;
+          border: 2px solid var(--black, black);
+          background: var(--black, black);
+          border-radius: 50%;
+          mix-blend-mode: difference;
+          transition: width ease-in-out 300ms, height ease-in-out 300ms, opacity ease-in-out 300ms;
+        }
+
+        .cursor-wrapper.expanded .custom-cursor__outer {
+          background-color: var(--black);
+          opacity: 0.3;
+          width: 40px;
+          height: 40px;
+        }
+
+        .custom-cursor__inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .custom-cursor__inner:before,
+        .custom-cursor__inner:after {
+          content: "";
+          position: absolute;
+          width: 40%;
+          height: 1px;
+          background: var(--black, black);
+          transition: transform 0.1s linear;
+        }
+        .custom-cursor__inner:before {
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%);
+        }
+        .custom-cursor__inner:after {
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) rotate(-90deg);
+        }
+        .custom-cursor__inner.is-closing:after {
+          transform: translateX(-50%) rotate(0deg);
+        }
+      </style>
+      <div class="cursor-wrapper">
+        <div class="custom-cursor custom-cursor__outer">
+          <div class="custom-cursor custom-cursor__inner"></div>
+        </div>
+      </div>
+    </template>
+    <yp-cursor></yp-cursor>
+    <main>
+      <header>
+        <h1>Yerko Palma<em>Full stack developer</em></h1>
+        <span>Desarrollador full stack, con preferencia por Javascript 💫. Actualmente trabajando como desarrollador .NET/Js, pero con ganas de ayudar en tu próximo proyecto.</span>
+      </header>
+      <nav>
+        <ul>
+          <li data-expand><a >Experiencia</a></li>
+          <li data-expand><a >Proyectos</a></li>
+          <li data-expand><a >Blog</a></li>
+          <li data-expand><a >Contactos</a></li>
+        </ul>
+      </nav>
+    </main>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
