@@ -28,8 +28,20 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  cursor: none;
+  cursor: none !important;
   font-size: 14px;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+a:any-link,
+a, 
+a:hover,
+a:-webkit-any-link {
+  cursor: none !important;
+  text-decoration: none !important;
+  color: var(--color-4);
 }
 
 main {
@@ -38,7 +50,8 @@ main {
   height: calc(100vh - 3rem);
   border: solid .125rem var(--color-6);
   border-radius: 3px;
-
+  position: fixed;
+  top: 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -90,6 +103,38 @@ main > nav > ul > li {
 
 main > nav > ul > li:hover {
   list-style-type: disclosure-closed;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-1);
+  color: var(--white);
+  margin-top: 100vh;
+  position: relative;
+  display: flex;
+  padding: 1rem 3rem;
+  gap: 1rem;
+}
+
+section > .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section > .image-container > img {
+  border-radius: 50% !important;
+  width: 296px;
+  height: 296px;
+}
+
+section > md-content {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 @media (max-width: 767.98px) {
