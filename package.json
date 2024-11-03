@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predev": "node ./scripts/prepare-md.js",
     "build": "vite build",
+    "prebuild": "node ./scripts/prepare-md.js",
     "preview": "vite preview"
   },
   "devDependencies": {
