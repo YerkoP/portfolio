@@ -5,7 +5,12 @@
   --color-4: #D9B7B0;
   --color-5: #59403E;
   --color-6: #203040;
+  --color-7: #BFB38E;
+  --color-8: #D99B77;
   --black: #0D0D0D;
+  --black1: #0D0D0DE0;
+  --black2: #0D0D0DAD;
+  --black3: #0D0D0D5E;
   --white: #F2F2F2;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -25,6 +30,7 @@
 body {
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -136,7 +142,98 @@ section > md-content {
   align-items: center;
   padding: 0 2rem;
 }
+section.grid {
+  background-color: var(--color-4);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  margin: 0;
+  grid-column-gap: 0.25rem;
+  grid-row-gap: 0.25rem;
+}
+section.grid div {
+  border-radius: 3px;
+}
+section.grid .main {
+  grid-area: 2 / 1 / 6 / 4;
+  background-color: var(--color-5);
+  
+}
+section.grid .secondary {
+  grid-area: 2 / 4 / 5 / 7;
+  background-color: var(--color-6);
+}
+section.grid .main-tagged {
+  grid-area: 2 / 7 / 6 / 9;
+  background-color: var(--color-3);
+  color: var(--color-6);
+}
+section.grid .secondary-tagged {
+  grid-area: 5 / 4 / 8 / 7;
+  background-color: var(--color-2);
+}
+section.grid .tags {
+  grid-area: 6 / 7 / 8 / 9;
+  background-color: var(--color-6);
+}
+section.grid .blog-link {
+  grid-area: 6 / 1 / 8 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.grid .blog-link a {
+  background-color: var(--color-2);
+  padding: .5rem 1rem;
+  border-radius: 24px;
+  font-size: 1rem;
+}
+section.grid > div {
+  padding: .5rem;
+}
+section.grid .post-summary {
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+  border-radius: 3px;
+  border: solid .025rem;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+}
 
+section.grid .post-summary h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+section.grid .post-summary .date {
+  font-weight: 100;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+section.grid .post-summary .content {
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+section.grid .post-summary .post-tags {
+  margin: 0;
+  list-style: none;
+  background-color: inherit;
+  padding: 0;
+  display: flex;
+}
+section.grid .post-summary .post-tags li {
+  padding: .25rem .75rem;
+  border-radius: 24px;
+  background-color: var(--color-1);
+  display: flex;
+  width: auto;
+  color: var(--white);
+}
 @media (max-width: 767.98px) {
   main {
     margin: 0;

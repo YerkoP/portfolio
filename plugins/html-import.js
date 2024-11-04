@@ -30,7 +30,7 @@ export function htmlTemplateImport(config) {
 async function injectHtml(file, original, baseDir) {
   if (file.isFile() && file.name.indexOf('.html') > 0) {
     const content = await readFile(join(baseDir, file.name))
-    const bodyIndex = original.indexOf('<body>')
+    const bodyIndex = original.indexOf('</body>')
     return [original.slice(0, bodyIndex), content, original.slice(bodyIndex)].join('')
   }
   return ''

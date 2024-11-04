@@ -26,8 +26,8 @@
     }
 
     .custom-cursor__outer {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border: 2px solid var(--black, black);
       background: var(--black, black);
       border-radius: 50%;
@@ -36,8 +36,14 @@
     }
 
     .cursor-wrapper.expanded .custom-cursor__outer {
-      background-color: var(--black);
+      background-color: var(--black, black);
       opacity: 0.3;
+      width: 30px;
+      height: 30px;
+    }
+
+    .cursor-wrapper.wide .custom-cursor__outer {
+      background-color: var(--black3);
       width: 40px;
       height: 40px;
     }
