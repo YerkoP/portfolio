@@ -294,6 +294,8 @@ section.contact .social-media ul li {
     width: 100%;
     border: none;
     padding: 1rem;
+    height: auto;
+    position: relative;
   }
   main > header {
     grid-column-end: 12;
@@ -301,5 +303,31 @@ section.contact .social-media ul li {
   }
   main > nav {
     grid-column-start: 1;
+  }
+  section {
+    margin-top: 0;
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+  section.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+  section.contact {
+    padding: 2rem 1rem;
+  }
+  section.contact .contact-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  section.contact .contact-card {
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 0;
+  }
+  section.contact .social-media {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 24px;
   }
 }
