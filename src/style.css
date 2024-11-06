@@ -234,6 +234,60 @@ section.grid .post-summary .post-tags li {
   width: auto;
   color: var(--white);
 }
+section.contact {
+  margin-top: 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section.contact .contact-inner {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 0;
+}
+section.contact .contact-card {
+  grid-column-end: 4;
+  color: var(--color-6);
+  grid-column-start: 2;
+  background-color: var(--color-4);
+  min-width: 100px;
+  display: block;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  padding: 1rem;
+}
+section.contact .contact-card h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+section.contact .social-media {
+  grid-column-start: 4;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  grid-column-end: 7;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  position: relative;
+}
+section.contact .social-media img {
+  height: 100%;
+  width: 100%;
+}
+section.contact .social-media ul {
+  position: absolute;
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  bottom: 0;
+  padding: 0;
+}
+section.contact .social-media ul li {
+  max-width: 100%;
+  width: 32px;
+  height: 32px;
+}
+
 @media (max-width: 767.98px) {
   main {
     margin: 0;
