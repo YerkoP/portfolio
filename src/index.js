@@ -28,3 +28,26 @@ import './md-content'
     cursor.removeClass('expanded')
   })
 })()
+
+document.addEventListener('DOMContentLoaded', () => {
+  let counter = 0
+  const length = document.images.length
+  const loaderEl = document.querySelector('.loader')
+  loaderEl.addEventListener('transitionend', () => {
+    loaderEl.remove()
+  })
+
+  for (const img of document.images) {
+    if (img.complete) {
+      countImagesLoaded()
+    } else {
+      img.addEventListener('load', countImagesLoaded, false)
+    }
+  }
+  function countImagesLoaded() {
+    counter++
+    if (counter === length) {
+      document.body.classList.add('ready')
+    }
+  }
+})
