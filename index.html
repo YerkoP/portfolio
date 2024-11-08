@@ -66,6 +66,30 @@
         font-style: normal;
       }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+      let counter = 0
+      const length = document.images.length
+      const loaderEl = document.querySelector('.loader')
+      loaderEl.addEventListener('transitionend', () => {
+        loaderEl.remove()
+      })
+
+      for (const img of document.images) {
+        if (img.complete) {
+          countImagesLoaded()
+        } else {
+          img.addEventListener('load', countImagesLoaded, false)
+        }
+      }
+      function countImagesLoaded() {
+        counter++
+        if (counter === length) {
+          document.body.classList.add('ready')
+        }
+      }
+    })
+    </script>
   </head>
   <body>
     <div class="loader">
@@ -81,14 +105,14 @@
       </header>
       <nav>
         <ul>
-          <li data-expand><a >Experiencia</a></li>
-          <li data-expand><a >Proyectos</a></li>
-          <li data-expand><a >Blog</a></li>
-          <li data-expand><a >Contactos</a></li>
+          <li data-expand><a data-scrollto="experience">Experiencia</a></li>
+          <li data-expand><a data-scrollto="blog">Proyectos</a></li>
+          <li data-expand><a data-scrollto="blog">Blog</a></li>
+          <li data-expand><a data-scrollto="contact">Contactos</a></li>
         </ul>
       </nav>
     </main>
-    <section>
+    <section id="experience">
       <div class="image-container">
         <img src="https://avatars.githubusercontent.com/u/184888747?v=4">
       </div>
@@ -108,7 +132,7 @@ En cuanto a base de datos trabajo constantemente con
 no relacionales como [Redis](https://redis.io/es/) y [MongoDB](https://www.mongodb.com/es)
       </md-content>
     </section>
-    <section class="grid">
+    <section id="blog" class="grid">
       <div class="main">
         <div class="post-summary">
           <ul class="post-tags">
@@ -157,7 +181,7 @@ no relacionales como [Redis](https://redis.io/es/) y [MongoDB](https://www.mongo
         <a data-expand>Visitar el blog</a>
       </div>
     </section>
-    <section class="contact">
+    <section id="contact" class="contact">
       <div class="contact-inner">
         <div class="contact-card">
           <h3>Información de contacto</h3>

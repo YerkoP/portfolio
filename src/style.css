@@ -12,8 +12,7 @@ a,
 a:hover,
 a:-webkit-any-link {
   cursor: none !important;
-  text-decoration: none !important;
-  color: var(--color-4);
+  text-decoration: none;
 }
 
 main {
@@ -75,6 +74,10 @@ main > nav > ul > li {
 
 main > nav > ul > li:hover {
   list-style-type: disclosure-closed;
+}
+
+main > nav > ul > li > a {
+  color: var(--color-6);
 }
 
 section {
@@ -150,9 +153,10 @@ section.grid .blog-link {
 }
 section.grid .blog-link a {
   background-color: var(--color-2);
-  padding: .5rem 1rem;
-  border-radius: 24px;
-  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 32px;
+  color: var(--color-3);
+  font-size: 1.5rem;
 }
 section.grid > div {
   padding: .5rem;
@@ -224,6 +228,13 @@ section.contact .contact-card {
 section.contact .contact-card h3 {
   font-size: 1.5rem;
   font-weight: 500;
+}
+section.contact .contact-card a {
+  display: block;
+  clear: both;
+  text-align: center;
+  color: var(--color-6);
+  font-size: 1rem;
 }
 section.contact .social-media {
   grid-column-start: 4;

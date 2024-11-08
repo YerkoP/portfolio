@@ -7,6 +7,7 @@ import './md-content'
   const gridItems = Array.from(document.querySelectorAll('.grid > div:not(.blog-link)'))
   const links = Array.from(document.querySelectorAll('a[href]'))
   const cursor = document.querySelector('yp-cursor')
+  const navLinks = Array.from(document.querySelectorAll('[data-scrollto]'))
 
   for (const item of expansionItems.concat(links)) {
     item.addEventListener('mouseenter', () => cursor.addClass('expanded'))
@@ -16,6 +17,13 @@ import './md-content'
   for (const item of gridItems) {
     item.addEventListener('mouseenter', () => cursor.addClass('wide'))
     item.addEventListener('mouseleave', () => cursor.removeClass('wide'))
+  }
+
+  for(const navLink of navLinks) {
+    const target = document.getElementById(navLink.dataset.scrollto)
+    navLink.addEventListener('click', () => {
+      target.scrollIntoView({behavior: 'smooth'})
+    })
   }
 
   // for md-content
@@ -29,25 +37,3 @@ import './md-content'
   })
 })()
 
-document.addEventListener('DOMContentLoaded', () => {
-  let counter = 0
-  const length = document.images.length
-  const loaderEl = document.querySelector('.loader')
-  loaderEl.addEventListener('transitionend', () => {
-    loaderEl.remove()
-  })
-
-  for (const img of document.images) {
-    if (img.complete) {
-      countImagesLoaded()
-    } else {
-      img.addEventListener('load', countImagesLoaded, false)
-    }
-  }
-  function countImagesLoaded() {
-    counter++
-    if (counter === length) {
-      document.body.classList.add('ready')
-    }
-  }
-})
