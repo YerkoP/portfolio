@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+  <ul>
+<li><a href="/test">test</a></li>
+</ul>
+
+  <template id="cursor-template">
+  <style>
+    .cursor-wrapper {
+      position: fixed;
+      opacity: 1;
+      width: 100px;
+      height: 100px;
+      left: -50px;
+      top: -50px;
+      transform: translate(-100%, -100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1600000;
+      pointer-events: none;
+      isolation: isolate;
+    }
+    .cursor-wrapper.has-blend-mode {
+      mix-blend-mode: exclusion;
+    }
+    
+    .custom-cursor {
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+
+    .custom-cursor__outer {
+      width: 5px;
+      height: 5px;
+      border: 2px solid var(--black, black);
+      background: var(--black, black);
+      border-radius: 50%;
+      mix-blend-mode: difference;
+      transition: width ease-in-out 300ms, height ease-in-out 300ms, opacity ease-in-out 300ms;
+    }
+
+    .cursor-wrapper.expanded .custom-cursor__outer {
+      background-color: var(--black, black);
+      opacity: 0.3;
+      width: 30px;
+      height: 30px;
+    }
+
+    .cursor-wrapper.wide .custom-cursor__outer {
+      background-color: var(--black3);
+      width: 40px;
+      height: 40px;
+    }
+
+    .custom-cursor__inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .custom-cursor__inner:before,
+    .custom-cursor__inner:after {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 1px;
+      background: var(--black, black);
+      transition: transform 0.1s linear;
+    }
+    .custom-cursor__inner:before {
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%);
+    }
+    .custom-cursor__inner:after {
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+    }
+    .custom-cursor__inner.is-closing:after {
+      transform: translateX(-50%) rotate(0deg);
+    }
+  </style>
+  <div class="cursor-wrapper">
+    <div class="custom-cursor custom-cursor__outer">
+      <div class="custom-cursor custom-cursor__inner"></div>
+    </div>
+  </div>
+</template><template id="md-content-template">
+  <style>
+    a:any-link,
+    a, 
+    a:hover,
+    a:-webkit-any-link {
+      cursor: none !important;
+      color: var(--color-8);
+      text-decoration: underline wavy;
+      text-underline-offset: .25rem;
+    }
+  </style>
+  <div class="content"></div>
+  <slot></slot>
+</template></body>
+</html>
