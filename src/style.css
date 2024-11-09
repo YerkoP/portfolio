@@ -78,6 +78,7 @@ main > nav > ul > li:hover {
 
 main > nav > ul > li > a {
   color: var(--color-6);
+  text-decoration: none;
 }
 
 section {

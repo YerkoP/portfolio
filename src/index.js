@@ -51,8 +51,14 @@ const generateGlowButtons = () => {
   const navLinks = Array.from(document.querySelectorAll('[data-scrollto]'))
 
   for (const item of expansionItems.concat(links)) {
-    item.addEventListener('mouseenter', () => cursor.addClass('expanded'))
-    item.addEventListener('mouseleave', () => cursor.removeClass('expanded'))
+    item.addEventListener('mouseenter', (e) => {
+      e.preventDefault()
+      cursor.addClass('expanded')
+    })
+    item.addEventListener('mouseleave', (e) => {
+      e.preventDefault()
+      cursor.removeClass('expanded')
+    })
   }
 
   for (const item of gridItems) {
@@ -62,18 +68,17 @@ const generateGlowButtons = () => {
 
   for(const navLink of navLinks) {
     const target = document.getElementById(navLink.dataset.scrollto)
-    navLink.addEventListener('click', () => {
+    navLink.addEventListener('click', (e) => {
+      e.preventDefault()
       target.scrollIntoView({behavior: 'smooth'})
     })
   }
 
   // for md-content
   document.addEventListener('md-link-mouseenter', () => {
-    console.log('[doc] entering link')
     cursor.addClass('expanded')
   })
   document.addEventListener('md-link-mouseleave', () => {
-    console.log('[doc] leaving link')
     cursor.removeClass('expanded')
   })
 
